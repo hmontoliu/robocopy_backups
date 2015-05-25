@@ -15,7 +15,7 @@ set opts=/NP /MIR /R:1 /W:1 /XJ /FFT /TEE
 :: W7 o superior: 
 set rbcpy=robocopy
 
-:: XP2003 o inferior necesitan windows resource kit 
+:: XP2003 o inferior necesitan windows resource kits 
 :: set rbcpy="C:\Archivos de programa\Windows Resource Kits\Tools\robocopy" 
 
 set log_dir=C:\_backups
