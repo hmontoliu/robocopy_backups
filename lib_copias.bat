@@ -18,8 +18,8 @@ set rbcpy=robocopy
 :: XP2003 o inferior necesitan windows resource kit 
 :: set rbcpy="C:\Archivos de programa\Windows Resource Kits\Tools\robocopy" 
 
-set log_dir=C:\_backups\  
-set log_suf=%DATE:/=%.log 
+set log_dir=C:\_backups
+set log_suf=%DATE:/=%.log
 
 :: TODO if not exists
 md %log_dir%
