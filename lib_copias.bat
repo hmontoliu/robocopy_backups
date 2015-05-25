@@ -1,7 +1,5 @@
 @echo off
-setlocal enableextensions
-
-:: editar preferentemente con notepad++ 
+:: Use a good editor like vim in GNU/Linux or notepad++ 
 
 :: Opciones recomenadadas para robocopy 
 set opts=/NP /MIR /R:1 /W:1 /XJ /FFT /TEE
@@ -20,9 +18,10 @@ set rbcpy=robocopy
 :: XP2003 o inferior necesitan windows resource kit 
 :: set rbcpy="C:\Archivos de programa\Windows Resource Kits\Tools\robocopy" 
 
-set log_dir="C:\_backups\"  :: dir para los logs
-set log_suf="%DATE:/=%.log" :: sufijo con la fecha
+set log_dir=C:\_backups\  
+set log_suf=%DATE:/=%.log 
 
+:: TODO if not exists
 md %log_dir%
 
 
