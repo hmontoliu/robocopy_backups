@@ -1,0 +1,2 @@
+91e48aa9efd9a4dbc000d7971fd48cc7  vscsc-latest.zip
+c918c6ea0ee200db588805a9c8ce9c9e  dosdev.zip
