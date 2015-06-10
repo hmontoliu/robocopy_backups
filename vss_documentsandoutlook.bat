@@ -1,45 +1,38 @@
 @echo off
+:: VSS requiere privilegios elevados
 call lib_copias.bat
-call lib_vss.bat
 
+:: Modificar si procede
+set USUARIO=user
+set UNIDAD_SRC=C:
+set SCRIPTNAME=vss_documentsandoutlook.bat
+set VSSUSERPROFILE=%UNIDAD_VSS%\users\%USUARIO%
 
-:: Copia de perfil y correo típica para el usuario de W7 que ejecuta el script:
+:: Destino y logfile (ver lib_copias.bat)
+set destino=D:\copias_seguridad\%USUARIO%
+md %destino%
 set logfile=%log_dir%\documentos_y_correo_%log_suf%
-set destino=D:\copias_seguridad\%USERNAME%
-%rbcpy% %USERPROFILE%\Desktop %destino%\Desktop %opts% /LOG:%logfile%
-%rbcpy% %USERPROFILE%\Documents %destino%\Documents %opts% /LOG:%logfile%
-%rbcpy% %USERPROFILE%\Pictures %destino%\Pictures %opts% /LOG+:%logfile%
-%rbcpy% %USERPROFILE%\Music %destino%\Music %opts% /LOG+:%logfile%
-%rbcpy% %USERPROFILE%\Videos %destino%\Videos %opts% /LOG+:%logfile%
-%rbcpy% %USERPROFILE%\AppData\Local\Microsoft\Outlook %destino%\Outlook_AppData %opts% /LOG+:%logfile%
 
+if not "%1%"=="VSSBACKUP" goto DO
 
-set RUNDIR="C:"
+:VSSBACKUP
 
-if not "%1%"=="WINSCHED" goto DO
-
-:WINSCHED
-
-vscsc -exec=%RUNDIR%\robocopy-sample.bat C:
+%VSCSC% -exec=%RUNDIR%\%SCRIPTNAME% %UNIDAD_SRC%
 
 goto END
 
 :DO
 
-rem Name of the log file, to get some info about what's going on with robocopy
-set LOGFILE=%RUNDIR%\robocopy.log
+%DOSDEV% %UNIDAD_VSS% %1%
 
-rem DOS Volume Name to be assigned to the snapshot
-set SNAPDOS=B:
+:: Copia de perfil y correo típica para el usuario de W7 que ejecuta el script:
+%rbcpy% %VSSUSERPROFILE%\Desktop %destino%\Desktop %opts% /LOG:%logfile%
+%rbcpy% %VSSUSERPROFILE%\Documents %destino%\Documents %opts% /LOG:%logfile%
+%rbcpy% %VSSUSERPROFILE%\Pictures %destino%\Pictures %opts% /LOG+:%logfile%
+%rbcpy% %VSSUSERPROFILE%\Music %destino%\Music %opts% /LOG+:%logfile%
+%rbcpy% %VSSUSERPROFILE%\Videos %destino%\Videos %opts% /LOG+:%logfile%
+%rbcpy% %VSSUSERPROFILE%\AppData\Local\Microsoft\Outlook %destino%\Outlook_AppData %opts% /LOG+:%logfile%
 
-rem Backup Documents and Settings folder
-set DOCS_SRC=%SNAPDOS%\Documents and Settings
-set DOCS_DST=C:\Documents and Settings.backup
+%DOSDEV% /D %UNIDAD_VSS%
 
-dosdev %SNAPDOS% %1%
-
-robocopy "%DOCS_SRC%" "%DOCS_DST%" /MIR /B /R:0 /SEC >> "%LOGFILE%"
-
-dosdev /D %SNAPDOS%
-
-
+:END

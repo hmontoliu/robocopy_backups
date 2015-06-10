@@ -1,6 +1,10 @@
 @echo off
 :: Use a good editor like vim in GNU/Linux or notepad++ 
 
+:: variables generales 
+set RUNDIR=\_backups\
+set TOOLSDIR=%RUNDIR%\tools\
+
 :: Opciones recomenadadas para robocopy 
 set opts=/NP /MIR /R:1 /W:1 /XJ /FFT /TEE
 
@@ -12,14 +16,20 @@ set opts=/NP /MIR /R:1 /W:1 /XJ /FFT /TEE
 :: /TEE       - Mostar en pantalla cuando se usa /LOG  
 :: /MT        - Multitask (no usar en entornos sin recursos) 
 
-:: W7 o superior: 
-set rbcpy=robocopy
-
 :: XP2003 o inferior necesitan windows resource kits 
 :: set rbcpy="C:\Archivos de programa\Windows Resource Kits\Tools\robocopy" 
 
-set log_dir=C:\_backups
+:: W7 o superior: 
+set rbcpy=robocopy
+
+set log_dir=%RUNDIR%
 set log_suf=%DATE:/=%.log
+
+
+:: Variables y settings por defecto para los VSS-Robocopy scripts (opcional)
+set VSCSC=%TOOLSDIR%\vscsc
+set DOSDEV=%TOOLSDIR%\dosdev
+set UNIDAD_VSS=B:
 
 :: TODO if not exists
 md %log_dir%
