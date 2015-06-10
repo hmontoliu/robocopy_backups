@@ -30,9 +30,9 @@ Modo de uso de los backups robocopy + VSS:
 
 * Configurar las variables del script::
 
-  USUARIO
-  UNIDAD_SRC
-  SRIPTNAME (si se cambia el nombre de la plantilla)
+ * USUARIO
+ * UNIDAD_SRC
+ * SRIPTNAME (si se cambia el nombre de la plantilla)
 
 
 * Configurar tarea programada en windows y ejectutarla con privilegios elevados. El script requiere el parámetro "VSSBACKUP" para ejecutar el VSS:
