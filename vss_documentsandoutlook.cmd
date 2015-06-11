@@ -1,5 +1,5 @@
 @echo off
-:: VSS requiere privilegios elevados (admin o backup operator)
+:: VSS requiere privilegios elevados (admin, backup operator y/o Performance Log Users) o bien que los binarios tengan privilegios (peligroso)
 call lib_copias.bat
 
 :: Modificar si procede
@@ -32,5 +32,8 @@ for %%D in (Desktop,Documents,Pictures,Music,Videos) do (
 %rbcpy% %VSSUSERPROFILE%\AppData\Local\Microsoft\Outlook %destino%\Outlook_AppData %opts% /LOG+:%logfile%
 
 %DOSDEV% /D %UNIDAD_VSS%
+
+:: siempre respaldar el propio sistema de backup
+%rbcpy% %TOOLDIR% %destino%\_backups %opts% /LOG+:%logfile%
 
 :END

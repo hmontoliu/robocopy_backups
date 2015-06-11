@@ -11,5 +11,6 @@ for %%D in (Desktop,Documents,Pictures,Music,Videos) do (
 
 %rbcpy% %USERPROFILE%\AppData\Local\Microsoft\Outlook %destino%\Outlook_AppData %opts% /LOG+:%logfile%
 
-
+:: siempre respaldar el propio sistema de backup
+%rbcpy% %TOOLDIR% %destino%\_backups %opts% /LOG+:%logfile%
 
