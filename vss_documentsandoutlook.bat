@@ -1,5 +1,5 @@
 @echo off
-:: VSS requiere privilegios elevados
+:: VSS requiere privilegios elevados (admin o backup operator)
 call lib_copias.bat
 
 :: Modificar si procede
