@@ -26,17 +26,10 @@ goto END
 %DOSDEV% %UNIDAD_VSS% %1%
 
 :: Copia de perfil y correo típica para el usuario de W7 que ejecuta el script:
-%rbcpy% %VSSUSERPROFILE%\Desktop %destino%\Desktop %opts% /LOG:%logfile%
-%rbcpy% %VSSUSERPROFILE%\Documents %destino%\Documents %opts% /LOG+:%logfile%
-%rbcpy% %VSSUSERPROFILE%\Pictures %destino%\Pictures %opts% /LOG+:%logfile%
-%rbcpy% %VSSUSERPROFILE%\Music %destino%\Music %opts% /LOG+:%logfile%
-%rbcpy% %VSSUSERPROFILE%\Videos %destino%\Videos %opts% /LOG+:%logfile%
+for %%D in (Desktop,Documents,Pictures,Music,Videos) do (
+    %rbcpy% %VSSUSERPROFILE%\%D %destino%\%%D %opts% /LOG+:%logfile%
+)
 %rbcpy% %VSSUSERPROFILE%\AppData\Local\Microsoft\Outlook %destino%\Outlook_AppData %opts% /LOG+:%logfile%
-
-:: alternativa
-::for %%D in (Desktop,Documents,Pictures,Music,Videos) do (
-::    %rbcpy% %VSSUSERPROFILE%\%D %destino%\%%D %opts% /LOG+:%logfile%
-::)
 
 %DOSDEV% /D %UNIDAD_VSS%
 
