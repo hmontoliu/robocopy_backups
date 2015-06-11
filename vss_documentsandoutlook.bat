@@ -27,7 +27,7 @@ goto END
 
 :: Copia de perfil y correo típica para el usuario de W7 que ejecuta el script:
 for %%D in (Desktop,Documents,Pictures,Music,Videos) do (
-    %rbcpy% %VSSUSERPROFILE%\%D %destino%\%%D %opts% /LOG+:%logfile%
+    %rbcpy% %VSSUSERPROFILE%\%%D %destino%\%%D %opts% /LOG+:%logfile%
 )
 %rbcpy% %VSSUSERPROFILE%\AppData\Local\Microsoft\Outlook %destino%\Outlook_AppData %opts% /LOG+:%logfile%
 
