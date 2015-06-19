@@ -5,7 +5,7 @@ call lib_copias.bat
 :: Modificar si procede
 set USUARIO=user
 set UNIDAD_SRC=C:
-set SCRIPTNAME=vss_documentsandoutlook.bat
+set SCRIPTNAME=vss_documentsandoutlook.cmd
 set VSSUSERPROFILE=%UNIDAD_VSS%\users\%USUARIO%
 
 :: Destino y logfile (ver lib_copias.bat)
