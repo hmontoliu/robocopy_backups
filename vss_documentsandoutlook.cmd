@@ -34,6 +34,6 @@ for %%D in (Desktop,Documents,Pictures,Music,Videos) do (
 %DOSDEV% /D %UNIDAD_VSS%
 
 :: siempre respaldar el propio sistema de backup
-%rbcpy% %TOOLSDIR% %destino%\_backups %opts% /LOG+:%logfile%
+%rbcpy% %RUNDIR% %destino%\_backups %opts% /LOG+:%logfile%
 
 :END
