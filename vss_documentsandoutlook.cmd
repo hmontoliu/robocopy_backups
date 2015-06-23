@@ -40,4 +40,4 @@ for %%D in (Desktop,Documents,Pictures,Music,Videos) do (
 
 :END
 
-exit
+exit /b 0

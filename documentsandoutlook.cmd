@@ -17,4 +17,4 @@ for %%D in (Desktop,Documents,Pictures,Music,Videos) do (
 :: siempre respaldar el propio sistema de backup
 %rbcpy% %RUNDIR% %destino%\_backups %opts% /LOG+:%logfile%
 
-exit
+exit /b 0
