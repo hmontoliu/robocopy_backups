@@ -1,5 +1,8 @@
 @echo off
-call lib_copias.bat
+set RUNDIR=C:\_backups\
+cd %RUNDIR%
+
+call %RUNDIR%\lib_copias.bat
 
 set logfile=%log_dir%\documentos_y_correo_%log_suf%
 set destino=D:\copias_seguridad\%USERNAME%

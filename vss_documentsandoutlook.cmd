@@ -1,6 +1,8 @@
 @echo off
+set RUNDIR=C:\_backups\
+cd %RUNDIR%
 :: VSS requiere privilegios elevados (admin, backup operator y/o Performance Log Users) o bien que los binarios tengan privilegios (peligroso)
-call lib_copias.bat
+call %RUNDIR%\lib_copias.bat
 
 :: Modificar si procede
 set USUARIO=user

@@ -1,7 +1,7 @@
 @echo off
 :: Use a good editor like vim in GNU/Linux or notepad++ 
 
-:: variables generales 
+:: variables generales (RUNDIR debe definirse en los scripts que llaman a este
 set RUNDIR=\_backups\
 set TOOLSDIR=%RUNDIR%\tools\
 
