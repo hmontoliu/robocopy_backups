@@ -39,3 +39,5 @@ for %%D in (Desktop,Documents,Pictures,Music,Videos) do (
 %rbcpy% %RUNDIR% %destino%\_backups %opts% /LOG+:%logfile%
 
 :END
+
+exit
