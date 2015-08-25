@@ -4,7 +4,7 @@ Despliegue típico de backups por robocopy con y sin VSS
 Instalación
 ----------------------------
 
-Crear un directorio ``c:\_backups\`` y copiar todo el contenido de esta carpeta en él.
+Crear un directorio ``c:\_backups\`` y copiar todo el contenido de esta carpeta en él. En caso de usar otra runta modificar la variable ``RUNDIR`` de los scripts.
 
 
 Backups robocopy sin VSS
@@ -32,12 +32,14 @@ Modo de uso de los backups robocopy + VSS:
 
  * USUARIO
  * UNIDAD_SRC
- * SRIPTNAME (si se cambia el nombre de la plantilla)
+ * SCRIPTNAME (si se cambia el nombre de la plantilla)
 
 
-* Configurar tarea programada en windows y ejectutarla con privilegios elevados. El script requiere el parámetro "VSSBACKUP" para ejecutar el VSS:
+* Configurar tarea programada en windows y ejectutarla con privilegios elevados. El script requiere el parámetro "VSSBACKUP" para ejecutar el VSS(1):
 
   nombrescript VSSBACKUP
+
+(1)  VSS requiere privilegios elevados (admin, backup operator y/o Performance Log Users) o bien que los binarios tengan esos privilegios (peligroso desde el punto de vista de la seguridad) 
 
 Disclaimer
 ----------------------------------
