@@ -1,9 +1,8 @@
 @echo off
-set COMMONSETTINGS=C:\_backups\lib_copias.bat
 :: VSS requiere privilegios elevados (admin, backup operator y/o Performance Log Users) o bien que los binarios tengan privilegios (peligroso)
 :: basado en http://vscsc.sourceforge.net/
+set COMMONSETTINGS=C:\_backups\lib_copias.bat
 call %COMMONSETTINGS%
-cd %RUNDIR%
 
 :: Modificar si procede
 set USUARIO=user
@@ -13,8 +12,10 @@ set VSSUSERPROFILE=%UNIDAD_VSS%\users\%USUARIO%
 
 :: Destino y logfile (ver lib_copias.bat)
 set destino=D:\copias_seguridad\%USUARIO%
-md %destino%
 set logfile=%log_dir%\documentos_y_correo_%log_suf%
+
+
+cd %RUNDIR%
 
 if not "%1%"=="VSSBACKUP" goto DO
 
