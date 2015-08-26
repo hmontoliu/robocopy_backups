@@ -1,6 +1,7 @@
 @echo off
 set COMMONSETTINGS=C:\_backups\lib_copias.bat
 :: VSS requiere privilegios elevados (admin, backup operator y/o Performance Log Users) o bien que los binarios tengan privilegios (peligroso)
+:: basado en http://vscsc.sourceforge.net/
 call %COMMONSETTINGS%
 cd %RUNDIR%
 
