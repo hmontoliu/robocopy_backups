@@ -2,7 +2,7 @@
 :: Use a good editor like vim in GNU/Linux or notepad++ 
 
 :: variables generales (RUNDIR debe definirse en los scripts que llaman a este
-set RUNDIR=\_backups\
+set RUNDIR=C:\_backups\
 set TOOLSDIR=%RUNDIR%\tools\
 
 :: Opciones recomenadadas para robocopy 
