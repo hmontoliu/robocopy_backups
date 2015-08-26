@@ -1,5 +1,6 @@
 @echo off
-set RUNDIR=C:\_backups\
+set COMMONSETTINGS=C:\_backups\lib_copias.bat
+call %COMMONSETTINGS%
 cd %RUNDIR%
 
 call %RUNDIR%\lib_copias.bat
