@@ -14,7 +14,6 @@ set VSSUSERPROFILE=%UNIDAD_VSS%\users\%USUARIO%
 set destino=D:\copias_seguridad\%USUARIO%
 set logfile=%log_dir%\documentos_y_correo_%log_suf%
 
-
 cd %RUNDIR%
 
 if not "%1%"=="VSSBACKUP" goto DO
