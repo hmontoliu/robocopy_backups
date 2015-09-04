@@ -22,7 +22,9 @@ set opts=/NP /MIR /R:1 /W:1 /XJ /FFT /TEE
 :: W7 o superior: 
 set rbcpy=robocopy
 
-set log_dir=%RUNDIR%
+:: loggin
+set log_dir=%RUNDIR%\logs
+if not exist %log_dir% mkdir %log_dir%
 set log_suf=%DATE:/=%.log
 
 
