@@ -1,3 +1,4 @@
+# Use a good editor like vim in GNU/Linux or notepad++ 
 . C:\_backups\lib_copias.ps1
 
 cd $RUNDIR
@@ -26,4 +27,3 @@ $cmd = '& {0} "{1}" "{2}" {3} /LOG+:{4}' -f $rbcpy, $rundir, $dest, $opts, $logf
 Invoke-Expression $cmd
 
 # & shutdown -t 0 -f -s
-#exit /b 0
