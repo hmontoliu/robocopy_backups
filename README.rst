@@ -10,7 +10,7 @@ Crear un directorio ``c:\_backups\`` y copiar todo el contenido de esta carpeta 
 Rotación de backups
 -------------------------
 
-Los scripts powershell permiten la creación de respaldos rotatorios (ver variable ROTATEIDX y cód. lib_copias.ps1 )
+Los scripts powershell permiten la creación de respaldos rotatorios (ver variable `$ROTATEIDX` y cód. `lib_copias.ps1`)
 
 Backups robocopy sin VSS
 ---------------------------------------------
@@ -33,7 +33,7 @@ Para backups normales utilizar la plantilla::
 
 Para invocar como tarea programada recomiendo la siguiente sintaxis::
 
-    powershell -ExecutionPolicy Bypass -Command C:\_backups\documentsandoutlook.ps1"
+    powershell -ExecutionPolicy Bypass -Command "C:\_backups\documentsandoutlook.ps1"
 
 
 Backups robocopy con VSS
@@ -56,7 +56,7 @@ Para backups con VSS utilizar la plantilla::
 
 Para invocar como tarea programada recomiendo la siguiente sintaxis::
 
-    powershell -ExecutionPolicy Bypass -Command C:\_backups\vss_documentsandoutlook.ps1" "VSSBACKUP"
+    powershell -ExecutionPolicy Bypass -Command "C:\_backups\vss_documentsandoutlook.ps1" "VSSBACKUP"
 
 
 

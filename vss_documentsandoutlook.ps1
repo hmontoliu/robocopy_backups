@@ -21,7 +21,7 @@ $scriptname = $MyInvocation.MyCommand.Name
 if ($ARGS[0] -eq "VSSBACKUP") {
 
 	# horrible hack, pido disculpas :-(
-	$tmpcmd = 'powershell -ExecutionPolicy Bypass -Command {0}\{1}" "%1%"' -f $rundir, $scriptname
+	$tmpcmd = 'powershell -ExecutionPolicy Bypass -Command "{0}\{1}" "%1%"' -f $rundir, $scriptname
 	Set-Content $rundir/callscript.cmd "$tmpcmd" -Encoding ASCII
 	$vsscmd = '& {0} -exec={1}\callscript.cmd {2} ' -f $VSCSC, $rundir, $UNIDAD_SRC
 	Invoke-Expression $vsscmd
