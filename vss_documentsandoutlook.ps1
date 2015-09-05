@@ -1,4 +1,5 @@
-# VSS requiere privilegios elevados (admin, backup operator y/o Performance Log Users) o bien que los binarios tengan privilegios (peligroso)
+# VSS requiere privilegios elevados (admin, backup operator y/o Performance Log
+# Users) o bien que los binarios tengan privilegios (peligroso)
 # basado en http://vscsc.sourceforge.net/
 $COMMONSETTINGS = "C:\_backups\lib_copias.ps1"
 . $COMMONSETTINGS
