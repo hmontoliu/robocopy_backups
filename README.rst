@@ -12,13 +12,23 @@ Rotación de backups
 
 Los scripts powershell permiten la creación de respaldos rotatorios (ver variable `$ROTATEIDX` y cód. `lib_copias.ps1`)
 
+El `$ROTATEIDX` debe ser un valor entre 1 y 7. Un `$ROTATEIDX` de 1 implica una única copia que se sobreescribe cada día, uno de 7 implicaría una copia independiente para cada día de la semana. Ver todas las posibles combinaciones de rotación en la siguiente tabla::
+
+	1 :  [(0, 'dom'), (0, 'jue'), (0, 'lun'), (0, 'mar'), (0, 'mie'), (0, 'sab'), (0, 'vie')]
+    2 :  [(0, 'jue'), (0, 'mar'), (0, 'sab'), (1, 'dom'), (1, 'lun'), (1, 'mie'), (1, 'vie')]
+    3 :  [(0, 'mie'), (0, 'sab'), (1, 'dom'), (1, 'jue'), (1, 'lun'), (2, 'mar'), (2, 'vie')]
+    4 :  [(0, 'jue'), (1, 'lun'), (1, 'vie'), (2, 'mar'), (2, 'sab'), (3, 'dom'), (3, 'mie')]
+    5 :  [(0, 'vie'), (1, 'lun'), (1, 'sab'), (2, 'dom'), (2, 'mar'), (3, 'mie'), (4, 'jue')]
+    7 :  [(0, 'dom'), (1, 'lun'), (2, 'mar'), (3, 'mie'), (4, 'jue'), (5, 'vie'), (6, 'sab')]
+
+
 Backups robocopy sin VSS
 ---------------------------------------------
 
 Configurar tarea programada en windows y ejecutarla con los permisos del propio usuario al que se le hace el backup.
 
-Batch
-~~~~~~~~~~~
+Batch (obsoleto, se mantiene por compatibilidad con sistemas en uso)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Para backups normales utilizar plantilla::
 
@@ -39,8 +49,8 @@ Para invocar como tarea programada recomiendo la siguiente sintaxis::
 Backups robocopy con VSS
 ---------------------------------------------
 
-Batch
-~~~~~~~~~~~~~~~~~
+Batch (obsoleto, se mantiene por compatibilidad con sistemas en uso)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 Para backups con VSS utilizar plantilla::
@@ -58,8 +68,6 @@ Para invocar como tarea programada recomiendo la siguiente sintaxis::
 
     powershell -ExecutionPolicy Bypass -Command "C:\_backups\vss_documentsandoutlook.ps1" "VSSBACKUP"
 
-
-
 Modo de uso de los backups robocopy + VSS:
 
 * Configurar las variables del script::
@@ -69,9 +77,9 @@ Modo de uso de los backups robocopy + VSS:
  * SCRIPTNAME (si se cambia el nombre de la plantilla)
 
 
-* Configurar tarea programada en windows y ejecutarla con privilegios elevados. El script requiere el parámetro "VSSBACKUP" para ejecutar el VSS(1):
+* Configurar tarea programada en windows y ejecutarla con privilegios elevados. El script requiere el parámetro "VSSBACKUP" para ejecutar el VSS(1)::
 
-  nombrescript VSSBACKUP
+    powershell -ExecutionPolicy Bypass -Command "C:\_backups\vss_documentsandoutlook.ps1" "VSSBACKUP"
 
 (1)  VSS requiere privilegios elevados (admin, backup operator y/o Performance Log Users) o bien que los binarios tengan esos privilegios (peligroso desde el punto de vista de la seguridad) 
 
