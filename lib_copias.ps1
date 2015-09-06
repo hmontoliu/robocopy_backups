@@ -34,16 +34,18 @@ $DOSDEV = "${TOOLSDIR}\dosdev"
 $UNIDAD_VSS = "B:"
 
 # funciones
-function rbackup($src, $dest) {
+function rbackup([Parameter(Mandatory=$true)][string]$origen, 
+                 [Parameter(Mandatory=$true)][string]$destino) {
 	<#
-	Llama a: robocopy "origen" "destino" opciones /LOG+:logfile
+	ejecuta: robocopy "$origen" "$destino" opciones /LOG+:logfile
 	#>
-	$cmd = '& {0} "{1}" "{2}" {3} /LOG+:{4}' -f $rbcpy, $src, $dest, $opts, $logfile
+	$cmd = '& {0} "{1}" "{2}" {3} /LOG+:{4}' -f $rbcpy, $origen, $destino, $opts, $logfile
 	Invoke-Expression $cmd
 	}
 	
-function rotatedest($index) {
+function rotatedest([Parameter(Mandatory=$true)][ValidateRange(1,7)][Int]$index) {
 	<# rota el directorio de destino en funcion del factor de dia de la semana
+    Ojo la tabla supone 1-7 Lun-Dom (py, linux), pero Windows usa 0-6 Dom-Sab. TODO!
 	1 :  [(0, 'dom'), (0, 'jue'), (0, 'lun'), (0, 'mar'), (0, 'mie'), (0, 'sab'), (0, 'vie')]
     2 :  [(0, 'jue'), (0, 'mar'), (0, 'sab'), (1, 'dom'), (1, 'lun'), (1, 'mie'), (1, 'vie')]
     3 :  [(0, 'mie'), (0, 'sab'), (1, 'dom'), (1, 'jue'), (1, 'lun'), (2, 'mar'), (2, 'vie')]
@@ -51,5 +53,5 @@ function rotatedest($index) {
     5 :  [(0, 'vie'), (1, 'lun'), (1, 'sab'), (2, 'dom'), (2, 'mar'), (3, 'mie'), (4, 'jue')]
     7 :  [(0, 'dom'), (1, 'lun'), (2, 'mar'), (3, 'mie'), (4, 'jue'), (5, 'vie'), (6, 'sab')]
 	#>
-	return (get-date).DayOFWeek.value__ % $index
+    return [Int](get-date).DayOFWeek % $index
 	}
