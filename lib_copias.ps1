@@ -45,12 +45,14 @@ function rbackup([Parameter(Mandatory=$true)][string]$origen,
 	
 function rotatedest([Parameter(Mandatory=$true)][ValidateRange(1,7)][Int]$index) {
 	<# rota el directorio de destino en funcion del factor de dia de la semana
-    Ojo la tabla supone 1-7 Lun-Dom (py, linux), pero Windows usa 0-6 Dom-Sab. TODO!
-	1 :  [(0, 'dom'), (0, 'jue'), (0, 'lun'), (0, 'mar'), (0, 'mie'), (0, 'sab'), (0, 'vie')]
-    2 :  [(0, 'jue'), (0, 'mar'), (0, 'sab'), (1, 'dom'), (1, 'lun'), (1, 'mie'), (1, 'vie')]
-    3 :  [(0, 'mie'), (0, 'sab'), (1, 'dom'), (1, 'jue'), (1, 'lun'), (2, 'mar'), (2, 'vie')]
-    4 :  [(0, 'jue'), (1, 'lun'), (1, 'vie'), (2, 'mar'), (2, 'sab'), (3, 'dom'), (3, 'mie')]
-    5 :  [(0, 'vie'), (1, 'lun'), (1, 'sab'), (2, 'dom'), (2, 'mar'), (3, 'mie'), (4, 'jue')]
+    In [1]: dias = ['dom', 'lun', 'mar', 'mie', 'jue', 'vie', 'sab']
+    In [2]: for i in range(1,8): print i, ': ', sorted([((dias.index(x))%i, x) for x in dias])
+    1 :  [(0, 'dom'), (0, 'jue'), (0, 'lun'), (0, 'mar'), (0, 'mie'), (0, 'sab'), (0, 'vie')]
+    2 :  [(0, 'dom'), (0, 'jue'), (0, 'mar'), (0, 'sab'), (1, 'lun'), (1, 'mie'), (1, 'vie')]
+    3 :  [(0, 'dom'), (0, 'mie'), (0, 'sab'), (1, 'jue'), (1, 'lun'), (2, 'mar'), (2, 'vie')]
+    4 :  [(0, 'dom'), (0, 'jue'), (1, 'lun'), (1, 'vie'), (2, 'mar'), (2, 'sab'), (3, 'mie')]
+    5 :  [(0, 'dom'), (0, 'vie'), (1, 'lun'), (1, 'sab'), (2, 'mar'), (3, 'mie'), (4, 'jue')]
+    6 :  [(0, 'dom'), (0, 'sab'), (1, 'lun'), (2, 'mar'), (3, 'mie'), (4, 'jue'), (5, 'vie')]
     7 :  [(0, 'dom'), (1, 'lun'), (2, 'mar'), (3, 'mie'), (4, 'jue'), (5, 'vie'), (6, 'sab')]
 	#>
     return [Int](get-date).DayOFWeek % $index

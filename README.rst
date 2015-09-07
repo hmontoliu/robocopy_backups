@@ -14,13 +14,15 @@ Los scripts powershell permiten la creación de respaldos rotatorios (ver variab
 
 El `$ROTATEIDX` debe ser un valor entre 1 y 7. Un `$ROTATEIDX` de 1 implica una única copia que se sobreescribe cada día, uno de 7 implicaría una copia independiente para cada día de la semana. Ver todas las posibles combinaciones de rotación en la siguiente tabla::
 
-	1 :  [(0, 'dom'), (0, 'jue'), (0, 'lun'), (0, 'mar'), (0, 'mie'), (0, 'sab'), (0, 'vie')]
-    2 :  [(0, 'jue'), (0, 'mar'), (0, 'sab'), (1, 'dom'), (1, 'lun'), (1, 'mie'), (1, 'vie')]
-    3 :  [(0, 'mie'), (0, 'sab'), (1, 'dom'), (1, 'jue'), (1, 'lun'), (2, 'mar'), (2, 'vie')]
-    4 :  [(0, 'jue'), (1, 'lun'), (1, 'vie'), (2, 'mar'), (2, 'sab'), (3, 'dom'), (3, 'mie')]
-    5 :  [(0, 'vie'), (1, 'lun'), (1, 'sab'), (2, 'dom'), (2, 'mar'), (3, 'mie'), (4, 'jue')]
+    In [1]: dias = ['dom', 'lun', 'mar', 'mie', 'jue', 'vie', 'sab']
+    In [2]: for i in range(1,8): print i, ': ', sorted([((dias.index(x))%i, x) for x in dias])
+    1 :  [(0, 'dom'), (0, 'jue'), (0, 'lun'), (0, 'mar'), (0, 'mie'), (0, 'sab'), (0, 'vie')]
+    2 :  [(0, 'dom'), (0, 'jue'), (0, 'mar'), (0, 'sab'), (1, 'lun'), (1, 'mie'), (1, 'vie')]
+    3 :  [(0, 'dom'), (0, 'mie'), (0, 'sab'), (1, 'jue'), (1, 'lun'), (2, 'mar'), (2, 'vie')]
+    4 :  [(0, 'dom'), (0, 'jue'), (1, 'lun'), (1, 'vie'), (2, 'mar'), (2, 'sab'), (3, 'mie')]
+    5 :  [(0, 'dom'), (0, 'vie'), (1, 'lun'), (1, 'sab'), (2, 'mar'), (3, 'mie'), (4, 'jue')]
+    6 :  [(0, 'dom'), (0, 'sab'), (1, 'lun'), (2, 'mar'), (3, 'mie'), (4, 'jue'), (5, 'vie')]
     7 :  [(0, 'dom'), (1, 'lun'), (2, 'mar'), (3, 'mie'), (4, 'jue'), (5, 'vie'), (6, 'sab')]
-
 
 Backups robocopy sin VSS
 ---------------------------------------------
