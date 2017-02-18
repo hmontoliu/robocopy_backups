@@ -62,26 +62,63 @@ Para backups con VSS utilizar plantilla::
 Powershell (recomendado)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Dos posibles escenarios:
+
+* Todos los directorios a respaldar se encuentran en la misma unidad
+* Hay directorios a respaldar en varias unidades
+
+Todos los directorios a respaldar en la misma unidad
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 Para backups con VSS utilizar la plantilla::
 
-    vss_documentsandoutlook.ps1
+    vss_copia_disco_c.ps1
 
 Para invocar como tarea programada recomiendo la siguiente sintaxis::
 
-    powershell -ExecutionPolicy Bypass -Command "C:\_backups\vss_documentsandoutlook.ps1" "VSSBACKUP"
+    powershell -ExecutionPolicy Bypass -Command "C:\_backups\vss_copia_disco_c.ps1" "VSSBACKUP"
 
 Modo de uso de los backups robocopy + VSS:
 
 * Configurar las variables del script::
 
  * USUARIO
- * UNIDAD_SRC
+ * UNIDAD  (letra de la unidad dónde se hará el VSS)
+ * DESTBASE (ruta de destino, en el script se incluyen varios ejemplos)
  * SCRIPTNAME (si se cambia el nombre de la plantilla)
-
+ * En caso necesario editar origen/destino de los directorios a copiar, ejemplos en el código. Usar la variable ${UNIDAD_VSS} como base de la ruta a respaldar.
 
 * Configurar tarea programada en windows y ejecutarla con privilegios elevados. El script requiere el parámetro "VSSBACKUP" para ejecutar el VSS(1)::
 
-    powershell -ExecutionPolicy Bypass -Command "C:\_backups\vss_documentsandoutlook.ps1" "VSSBACKUP"
+    powershell -ExecutionPolicy Bypass -Command "C:\_backups\vss_copia_disco_c.ps1" "VSSBACKUP"
+
+(1)  VSS requiere privilegios elevados (admin, backup operator y/o Performance Log Users) o bien que los binarios tengan esos privilegios (peligroso desde el punto de vista de la seguridad) 
+
+
+Directorios a respaldar en dos o mas unidades
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Copiar la plantilla del punto anterior para cada una de las unidades a respaldar; por ejemplo para respaldar contenidos en C, D, y E habrá que crear los scripts a partir de la plantilla::
+
+    vss_copia_disco_c.ps1
+    vss_copia_disco_d.ps1
+    vss_copia_disco_e.ps1
+
+En cada uno de los scripts asignaremos el valor "UNIDAD" a la unidad C, D, o E según corresponda:
+
+* Variables de cada script a tener en cuenta::
+
+ * USUARIO
+ * UNIDAD  (letra de la unidad dónde se hará el VSS)
+ * DESTBASE (ruta de destino, en el script se incluyen varios ejemplos)
+ * SCRIPTNAME (si se cambia el nombre de la plantilla)
+ * En caso necesario editar origen/destino de los directorios a copiar, ejemplos en el código. Usar la variable ${UNIDAD_VSS} como base de la ruta a respaldar.
+
+* Configurar tarea programada en windows y ejecutarla con privilegios elevados. El script requiere el parámetro "VSSBACKUP" para ejecutar el VSS(1). Para invocar como tarea programada, se creará una única tarea con tantas acciones como discos a respaldar, de modo que en el ejemplo quedará como::
+
+    powershell -ExecutionPolicy Bypass -Command "C:\_backups\vss_copia_disco_c.ps1" "VSSBACKUP"
+    powershell -ExecutionPolicy Bypass -Command "C:\_backups\vss_copia_disco_d.ps1" "VSSBACKUP"
+    powershell -ExecutionPolicy Bypass -Command "C:\_backups\vss_copia_disco_e.ps1" "VSSBACKUP"
 
 (1)  VSS requiere privilegios elevados (admin, backup operator y/o Performance Log Users) o bien que los binarios tengan esos privilegios (peligroso desde el punto de vista de la seguridad) 
 
