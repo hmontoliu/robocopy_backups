@@ -92,6 +92,8 @@ Modo de uso de los backups robocopy + VSS:
 
     powershell -ExecutionPolicy Bypass -Command "C:\_backups\vss_copia_disco_c.ps1" "VSSBACKUP"
 
+* Portátiles: se añade código de comprobación de presencia (opcional, comentado) del servidor de backup que permite abortar el respaldo si el servidor de copias de seguridad no se encuentra en la red. 
+
 (1)  VSS requiere privilegios elevados (admin, backup operator y/o Performance Log Users) o bien que los binarios tengan esos privilegios (peligroso desde el punto de vista de la seguridad) 
 
 
