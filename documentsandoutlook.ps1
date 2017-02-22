@@ -29,4 +29,5 @@ rbackup "${env:USERPROFILE}\AppData\Local\Microsoft\Outlook" "${destprefix}\Outl
 # siempre respaldar el propio sistema de backup
 rbackup "${rundir}" "${destprefix}\_backups"
 
-# & shutdown -t 0 -f -s
+# shutdown at the end
+# Stop-Computer -ComputerName localhost -Force

@@ -64,3 +64,6 @@ if ($ARGS[0] -eq "VSSBACKUP") {
 } 
 
 # } # /if Test-Connection ...
+#
+# shutdown at the end
+# Stop-Computer -ComputerName localhost -Force
