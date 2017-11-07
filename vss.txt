@@ -1,0 +1,16 @@
+Crear vss w10
+
+ wmic shadowcopy call create Volume='C:\'
+ 
+ 
+ Listar los vss
+ 
+ vssadmin list shadows /for=C:
+ 
+ Montar el vss (la raiz no se monta bien)
+ 
+ mklink /J C:\shadow_vol \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Users
+ 
+ 
+ 
+ 
