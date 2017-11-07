@@ -7,10 +7,12 @@ Crear vss w10
  
  vssadmin list shadows /for=C:
  
- Montar el vss (la raiz no se monta bien)
+ Montar el vss 
  
- mklink /J C:\shadow_vol \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Users
+ mklink /J C:\shadow_vol \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\
  
+ A veces la raiz no se monta bien; usar un subdir
  
- 
+  mklink /J C:\shadow_vol \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Users
+
  
