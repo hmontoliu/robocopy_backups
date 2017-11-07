@@ -5,7 +5,12 @@ Crear vss w10
  
  Listar los vss
  
+ wmic shadowcopy
+ 
+ o con
+ 
  vssadmin list shadows /for=C:
+ 
  
  Montar el vss 
  
@@ -16,3 +21,6 @@ Crear vss w10
   mklink /J C:\shadow_vol \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Users
 
  
+Eliminar las vss (todas)
+
+wmic shadowcopy delete
