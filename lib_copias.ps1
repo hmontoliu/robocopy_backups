@@ -6,7 +6,7 @@ $RUNDIR = "C:\_backups\"
 $TOOLSDIR = "${RUNDIR}\tools\"
 
 # Opciones recomenadadas para robocopy 
-$opts="/NP /MIR /R:1 /W:1 /XJ /FFT /TEE"
+$opts="/NP /MIR /R:1 /W:1 /XJ /FFT /TEE /zb"
 
 # /NP        - No mostrar el progreso (opcional)  
 # /MIR       - Copia en espejo. Si no es necesario utilizar /E 
@@ -14,6 +14,7 @@ $opts="/NP /MIR /R:1 /W:1 /XJ /FFT /TEE"
 # /XJ        - Excludes junction points (W7 y sup) 
 # /FFT       - two-second precision (útil al copiar a Samba-linux) 
 # /TEE       - Mostar en pantalla cuando se usa /LOG  
+# /zb        - Permite copiar archivos en modo backup (saltando permisos)
 # /MT        - Multitask (no usar en entornos sin recursos) 
 
 # XP2003 o inferior necesitan windows resource kits 
